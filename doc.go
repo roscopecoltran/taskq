@@ -1,5 +1,3 @@
-package taskq
-
 /*
 Usage
 
@@ -46,3 +44,4 @@ Usage
 		fmt.Printf("%#v\n", ctx)
 	}
 */
+package taskq
