@@ -11,5 +11,5 @@ var (
 )
 
 func IsErrNoTasks(err error) bool {
-  return errgo.Cause(err) == ErrNoTasks
+	return errgo.Cause(err) == ErrNoTasks
 }
