@@ -38,8 +38,8 @@ func (q *Queue) RunTasks(tasks ...Task) error {
 func InSeries(tasks ...Task) Task {
 	if len(tasks) == 0 {
 		return func(ctx interface{}) error {
-      return Mask(ErrNoTasks)
-    }
+			return Mask(ErrNoTasks)
+		}
 	}
 
 	return func(ctx interface{}) error {
@@ -55,15 +55,15 @@ func InSeries(tasks ...Task) Task {
 func InParallel(tasks ...Task) Task {
 	if len(tasks) == 0 {
 		return func(ctx interface{}) error {
-      return Mask(ErrNoTasks)
-    }
+			return Mask(ErrNoTasks)
+		}
 	}
 
 	return func(ctx interface{}) error {
 		// Create error for current tasks. If there occurs one error, all remaining
 		// tasks will be canceled.
 		var err error
-    errCatched := false
+		errCatched := false
 
 		// Create waitgroup to keep track of parallel tasks by registering the count
 		// of them.
@@ -74,11 +74,11 @@ func InParallel(tasks ...Task) Task {
 		for _, t := range tasks {
 			go func(t Task, ctx interface{}) {
 				if e := t(ctx); e != nil {
-          // Just catch the first occuring error.
-          if !errCatched {
-            err = e
-            errCatched = true
-          }
+					// Just catch the first occuring error.
+					if !errCatched {
+						err = e
+						errCatched = true
+					}
 				}
 
 				wg.Done()
