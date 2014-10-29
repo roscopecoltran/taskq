@@ -22,7 +22,7 @@ Usage
     // Creating a pointer to your custom context.
     ctx := &Ctx{}
 
-    // Create a new queue configured with you context.
+    // Create a new queue configured with your context.
     q := taskqPkg.NewQueue(ctx)
 
     // Run your tasks in a specified order.
